@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>検索結果</title>
+</head>
+<body>
+<p>書籍一覧</p>
+</form>
+{% for book in books %}
+  <p>{{ book.title }}</p>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>本棚検索</title>
+</head>
+<body>
+<div id="register" >
+	<p>書籍登録</p>
+	<input id="register_title" type="text" name="title">
+	<button id="register_btn" type="submit">登録</button>
+</div>
+<script type="text/javascript">
+	document.getElementById("register_btn").onclick = function() {
+		var json = {'title': document.getElementById("register_title").value};
+		var xhr = new XMLHttpRequest();
+  		xhr.open("POST", "http://elasticsearch-1122592592.ap-northeast-1.elb.amazonaws.com:9200/books/book_type/", true);
+  		xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xhr.send(JSON.stringify(json));
+		xhr.onloadend = function () {
+  		};
+
+};
+</script>
+<p></p>
+<div id="register" >
+<p>書籍検索</p>
+<form method="GET" action="{% url 'result' %}">
+    <input type="text" name="keyword">
+	<button type="submit">検索</button>
+</body>
+</div>
+</html>
